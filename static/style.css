@@ -1,0 +1,242 @@
+*{
+    box-sizing:border-box;
+}
+
+html, body{
+    height:100%;
+}
+
+body{
+    margin:0;
+    padding:0;
+
+    font-family:'Segoe UI',sans-serif;
+
+    background:
+    linear-gradient(
+        135deg,
+        #020617,
+        #0f172a,
+        #1e293b
+    );
+}
+
+/*
+  Root cause of the "card is not centered" bug: the previous markup put
+  .main-card (a fixed-width block) inside Bootstrap's .container, which is
+  itself much wider than the card on large screens. The card, having no
+  auto margins of its own, sat flush against the container's left edge -
+  so it *looked* off-center even though the (wider, invisible) container
+  was centered correctly.
+
+  Fix: a single flex wrapper that centers its child directly, and a card
+  that fills that wrapper up to a max-width. No more mismatched boxes.
+*/
+.page-wrap{
+    min-height:100vh;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.main-card{
+
+    width:100%;
+    max-width:850px;
+    margin:0 auto;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    box-shadow:0 8px 30px rgba(0,0,0,0.4);
+}
+
+h1{
+    color:white;
+    font-size:3rem;
+    font-weight:bold;
+    word-wrap:break-word;
+}
+
+.subtitle{
+    color:#cbd5e1;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+input{
+    height:60px !important;
+    border-radius:15px !important;
+}
+
+.btn-primary{
+
+    background:#00e5ff !important;
+
+    border:none !important;
+
+    color:black !important;
+
+    font-weight:bold !important;
+
+    height:55px;
+
+    border-radius:15px !important;
+
+    transition:.3s;
+}
+
+.btn-primary:hover{
+    transform:scale(1.02);
+}
+
+.alert{
+    border-radius:15px;
+    font-weight:bold;
+}
+
+.result-alert{
+    text-align:left;
+}
+
+.result-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.risk-pill{
+    display:inline-block;
+    padding:4px 12px;
+    border-radius:999px;
+    font-size:0.8rem;
+    font-weight:bold;
+    background:rgba(0,0,0,0.15);
+}
+
+.explanation-text{
+    margin:12px 0 0 0;
+    font-weight:normal;
+    font-size:0.95rem;
+    line-height:1.5;
+}
+
+.score-row{
+    margin-top:5px;
+}
+
+.metric-box{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:16px;
+    padding:16px 18px;
+    height:100%;
+}
+
+.metric-box h6{
+    color:#94a3b8;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.stat-card{
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    color:white;
+
+    border-radius:20px;
+
+    padding:20px 12px;
+
+    text-align:center;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.stat-card h5{
+    color:#94a3b8;
+    font-size:0.85rem;
+    margin-bottom:8px;
+    white-space:nowrap;
+}
+
+.stat-card h2{
+    font-size:2rem;
+    font-weight:bold;
+    margin:0;
+}
+
+.progress{
+    height:30px;
+    border-radius:20px;
+    overflow:hidden;
+    background:rgba(255,255,255,0.08);
+}
+
+.progress-bar{
+    font-weight:bold;
+}
+
+footer{
+    color:#94a3b8;
+    text-align:center;
+    margin-top:25px;
+}
+
+@media (max-width: 767px){
+
+    .main-card{
+        padding:25px;
+        border-radius:18px;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
+    .subtitle{
+        font-size:0.95rem;
+    }
+
+    input{
+        height:50px !important;
+    }
+
+    .btn-primary{
+        height:50px;
+    }
+
+    .stat-card{
+        padding:16px 8px;
+    }
+
+    .stat-card h5{
+        font-size:0.75rem;
+        white-space:normal;
+    }
+
+    .stat-card h2{
+        font-size:1.5rem;
+    }
+
+    .result-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
